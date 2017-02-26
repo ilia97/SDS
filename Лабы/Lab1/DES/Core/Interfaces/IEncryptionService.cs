@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Interfaces
 {
-    public class Class1
+    public interface IEncryptionService
     {
+        string EncryptWithDES(string text, string key);
     }
 }
