@@ -43,6 +43,7 @@
     <Compile Include="Interfaces\IEncryptionService.cs" />
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Converter.cs" />
+    <Compile Include="Misc\EncodingType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EncryptionService.cs" />
   </ItemGroup>
