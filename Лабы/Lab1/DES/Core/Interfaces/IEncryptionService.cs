@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Misc;
 
 namespace Core.Interfaces
 {
     public interface IEncryptionService
     {
-        string EncryptWithDES(string text, string key);
+        string EncryptWithDES(string text, string key, EncodingType type);
     }
 }

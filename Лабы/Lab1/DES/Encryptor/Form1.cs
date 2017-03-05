@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Core;
 using Core.Interfaces;
 using Core.Services;
+using Core.Misc;
 
 namespace Encryptor
 {
@@ -21,6 +23,8 @@ namespace Encryptor
             encryptionService = new EncryptionService();
 
             InitializeComponent();
+
+            Logger.Initialize(this.textBox4);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,7 +32,14 @@ namespace Encryptor
             var text = this.textBox1.Text;
             var key = this.textBox2.Text;
 
-            var result = encryptionService.EncryptWithDES(text, key);
+            var encryptType = EncodingType.Encoding;
+
+            if (radioButton2.Checked)
+            {
+                encryptType = EncodingType.Decoding;
+            }
+
+            var result = encryptionService.EncryptWithDES(text, key, encryptType);
 
             this.textBox3.Text = result;
         }
