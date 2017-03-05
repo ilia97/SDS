@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Core;
 using Core.Interfaces;
 using Core.Misc;
 
@@ -13,6 +14,7 @@ namespace Core.Services
     {
         public string EncryptWithDES(string text, string key)
         {
+            Logger.Log()
             var bitText = text.ToBitArray();
             var bitKey = key.ToBitArray();
 
