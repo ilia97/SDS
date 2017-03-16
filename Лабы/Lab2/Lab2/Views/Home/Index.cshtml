@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<textarea class="form-control" id="text"></textarea>
+<button id="sendButton">Send</button>
+<textarea class="form-control" id="result"></textarea>
+
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $("#sendButton").click(function () {
+            debugger;
+            $.getJSON('@Url.Action("GetPublicKey")', null,
+                function (data) {
+                    var publicKey = data;
+
+                    // var encrypt = new JSEncrypt();
+                    // encrypt.setPublicKey(data);
+                    var encryptedText = cryptico.encrypt($('#text').val(), publicKey);
+
+                    $.post(
+                        '@Url.Action("SendMessage")',
+                        { 
+                            encryptedText: encryptedText.cipher,
+                            text: $('#text').val()
+                        },
+                        function (data) {
+                            $('#result').val(data);
+                        });
+                });
+        });
+    });
+</script>
+    }
