@@ -10,3 +10,13 @@ D:\Projects\SDS\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.Properties.Resou
 D:\Projects\SDS\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.csproj.GenerateResource.Cache
 D:\Projects\SDS\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.exe
 D:\Projects\SDS\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.pdb
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\bin\Debug\Encryptor.exe
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\bin\Debug\Encryptor.pdb
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\bin\Debug\Core.dll
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\bin\Debug\Core.pdb
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.csprojResolveAssemblyReference.cache
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.Form1.resources
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.Properties.Resources.resources
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.csproj.GenerateResource.Cache
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.exe
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Encryptor\obj\Debug\Encryptor.pdb

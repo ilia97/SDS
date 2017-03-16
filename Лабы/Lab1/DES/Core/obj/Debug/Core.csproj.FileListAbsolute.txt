@@ -3,3 +3,8 @@ D:\Projects\SDS\Лабы\Lab1\DES\Core\bin\Debug\Core.pdb
 D:\Projects\SDS\Лабы\Lab1\DES\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\Projects\SDS\Лабы\Lab1\DES\Core\obj\Debug\Core.dll
 D:\Projects\SDS\Лабы\Lab1\DES\Core\obj\Debug\Core.pdb
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Core\bin\Debug\Core.dll
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Core\bin\Debug\Core.pdb
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Core\obj\Debug\Core.dll
+D:\Учёба\3 курс\БПиД\Лабы\Lab1\DES\Core\obj\Debug\Core.pdb

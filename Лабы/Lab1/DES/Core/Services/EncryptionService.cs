@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Core;
 using Core.Interfaces;
 using Core.Misc;
 
@@ -13,20 +14,57 @@ namespace Core.Services
     {
         public string EncryptWithDES(string text, string key, EncodingType type)
         {
-            var bitText = text.ToBitArray();
-            var bitKey = key.ToBitArray();
+            string processStartString = "";
+            if (type == EncodingType.Encoding)
+            {
+                processStartString = $"Text ENCRYPTION has been started.\r\nText:\r\n{text}\r\nKey:{key}";
+            }
+            else
+            {
+                processStartString = $"Text DECRYPTION has been started.\r\nText:\r\n{text}\r\nKey:{key}";
+            }
+            Logger.Log(processStartString);
 
-            // var bitText = "0000000100100011010001010110011110001001101010111100110111101111";
-            // var bitKey = "0001001100110100010101110111100110011011101111001101111111110001";
+            var bitText = text.ToBitArray();
+            Logger.Log($"Text in bits:\r\n{bitText}");
+
+            var bitKey = key.ToBitArray();
+            Logger.Log($"Key in bits:\r\n{bitKey}");
 
             var key56Bits = Get56BitKey(bitKey);
+            Logger.Log($"56-bit key:\r\n{key56Bits}");
 
             var bitTextBlocks = Enumerable.Range(0, bitText.Length / 64)
                 .Select(i => bitText.Substring(i * 64, 64)).ToList();
 
-            var encodedBitTextBlocks = bitTextBlocks.Select(block => EncryptWithDES64Bit(block, key56Bits, type));
+            var encodedBitTextBlocks = new List<string>();
+            for (int i = 0; i < bitTextBlocks.Count; i++)
+            {
+                Logger.Log($"Encoding of 64-bit text block {i + 1} ({bitTextBlocks[i]})");
+                var encodedBlock = EncryptWithDES64Bit(bitTextBlocks[i], key56Bits, type);
+                if (type == EncodingType.Encoding)
+                {
+                    Logger.Log($"64-bit text block {i + 1} ({bitTextBlocks[i]}) has been encoded to {encodedBlock}");
+                }
+                else
+                {
+                    Logger.Log($"64-bit text block {i + 1} ({bitTextBlocks[i]}) has been decoded to {encodedBlock}");
+                }
+                encodedBitTextBlocks.Add(encodedBlock);
+            }
 
             var encodedText = string.Join("", encodedBitTextBlocks).FromBitsToString();
+
+            string processEndString = "";
+            if (type == EncodingType.Encoding)
+            {
+                processEndString = $"Text ENCRYPTION has ended.\r\nEncoded text:\r\n{encodedText}";
+            }
+            else
+            {
+                processEndString = $"Text DECRYPTION has ended.\r\nDecoded text:\r\n{encodedText}";
+            }
+            Logger.Log(processEndString);
 
             return encodedText;
         }
@@ -34,9 +72,12 @@ namespace Core.Services
         private string EncryptWithDES64Bit(string text64Bits, string key56Bit, EncodingType type)
         {
             var initiallyInvertedText = InitialInvert(text64Bits);
+            Logger.Log($"Inversion of 64-bit text block: {initiallyInvertedText}");
 
             var leftPart = initiallyInvertedText.Substring(0, 32);
+            Logger.Log($"First 32 bits of 64-bit text block: {leftPart}");
             var rightPart = initiallyInvertedText.Substring(32, 32);
+            Logger.Log($"Second 32 bits of 64-bit text block: {rightPart}");
 
             for (int i = 0; i < 16; i++)
             {
@@ -53,9 +94,14 @@ namespace Core.Services
                 var key48Bit = Get48BitKey(key56Bit, roundNumber);
 
                 rightPart = XOR(leftPartCopy, EncodeFunction(rightPart, key48Bit));
+
+
+                Logger.Log($"Round {i + 1}.\r\nLeft part: {leftPart}. Right part: {rightPart}");
             }
 
+            Logger.Log($"64-bits after 16 rounds: {rightPart + leftPart}");
             var finallyInvertedText = FinalInvert(rightPart + leftPart);
+            Logger.Log($"64-bits after final inversion: {finallyInvertedText}");
 
             return finallyInvertedText;
         }

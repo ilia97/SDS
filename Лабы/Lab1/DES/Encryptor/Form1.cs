@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Core;
 using Core.Interfaces;
 using Core.Services;
 using Core.Misc;
@@ -22,6 +23,8 @@ namespace Encryptor
             encryptionService = new EncryptionService();
 
             InitializeComponent();
+
+            Logger.Initialize(this.textBox4);
         }
 
         private void button1_Click(object sender, EventArgs e)
